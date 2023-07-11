@@ -5,23 +5,34 @@ import{
     isMDFile,
     readingFile,
     searchingLinks,
-  } from './script.js'  
+  } from './script.js' 
+  
+  import * as cowsay from "cowsay";
+
+const myCowSays =(string)=>{
+  console.log(cowsay.say({
+      text: string,
+      e: 'oO',
+      T: 'U',
+  }));
+};
   
  export const mdLinks=(path)=>{
         return new Promise((resolve,reject)=>{
-            if(!checkIsPath){
+            if(!checkIsPath(path)){
                 reject(new Error('Path is invalid'))
                 return
             }
-            if (!isAFile){
+            if (!isAFile(path)){
                 reject(new Error("File doesn't exist"))
                 return
             }
-            if (!isMDFile){
+            if (!isMDFile(path)){
                 reject(new Error ("File is not a MD file"))
                 return
             }
             const linksFounded=searchingLinks(path);
+            myCowSays("File reading successfully!!\n We've found next links:");
             resolve(linksFounded);
         })
     };
