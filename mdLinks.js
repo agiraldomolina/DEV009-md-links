@@ -18,34 +18,34 @@ const myCowSays =(string)=>{
 };
   
  export const mdLinks=(path)=>{
-        return new Promise((resolve,reject)=>{
+        const linksPromise= new Promise((resolve,reject)=>{
             if(!checkIsPath(path)){
                 reject(new Error('Path is invalid'))
                 return
-            }
-            if (!isAFile(path)){
+            }else if (!isAFile(path)){
                 reject(new Error("File doesn't exist"))
                 return
-            }
-            if (!isMDFile(path)){
+            }else if (!isMDFile(path)){
                 reject(new Error ("File is not a MD file"))
                 return
-            }
-            const linksFounded=searchingLinks(path);
-            myCowSays("File reading successfully!!\n We've found next links:");
-            resolve(linksFounded);
+            }else{
+                const linksFounded=searchingLinks(path);
+                myCowSays("File reading successfully!!\n We've found next links:");
+                resolve(linksFounded);
+            }          
         })
+        return linksPromise
     };
 
-    
-  
-//   mdLinks('./test1.md')
-//   .then((result)=>{
-//       myCowSays("File reading successfully!!");
-//       console.log("File reading successfully!!");
-//       //console.log(result);
-//   })
-//   .catch((error)=>{
-//       console.error(error)
-//   });
-  
+    mdLinks('./test1.md').then((result)=>{
+        console.log(result);
+    }).catch((err)=>{
+        console.error(err)
+    })
+
+    // mdLinks('./test1.md').then(data=>{
+    //     console.log(data);
+    // })
+    // .catch(err=>{
+    //     console.error(err)
+    // });
