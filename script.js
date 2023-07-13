@@ -1,14 +1,5 @@
 import { existsSync,statSync, readFile, promises } from 'fs'
 import { isAbsolute, resolve, extname } from 'node:path'
-import * as cowsay from "cowsay";
-
-const myCowSays =(string)=>{
-  console.log(cowsay.say({
-      text: string,
-      e: 'oO',
-      T: 'U',
-  }));
-};
 
  // This file contains all the functions and promises
 
@@ -23,7 +14,7 @@ export  const checkIsPath=(path)=>{
         return result       
     }
 };
-//console.log(checkIsPath('myText4.txt'));
+console.log(checkIsPath('myText4.txt'));
 //console.log(checkIsPath('./filesTest/myText2.txt'));
 //console.log(checkIsPath('myText1.txt'));
 
@@ -70,7 +61,6 @@ export const readingFile=(path)=>{
             if(isMDFile){
                 const linksEncontrados=searchingLinks(fileContent,path);
                 resolve(linksEncontrados);
-                myCowSays("File reading successfully!!\n We've found next links:");
             }else{
                 reject(new Error ("Not a MD file"))
             }
