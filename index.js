@@ -15,7 +15,7 @@ const mdLinks=(myPath)=>{
             return
         }else{
             readingFile(myPath).then(links=>{
-              links.length > 0?resolve(links):reject(new Error("The fila has not links"))
+              links.length > 0?resolve(links):reject(new Error("The file has not links"))
             })
             return;
         }          

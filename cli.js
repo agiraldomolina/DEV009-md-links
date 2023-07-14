@@ -16,8 +16,10 @@ const path='./test1.md';
 const path1='./test2.md'   // without links
 const path2='./test4.md'   // not exist
 const path3='./myText2.txt'  // not md file
+const path4='./mdFiles/test3.md'
+const path5='./mdFiles/test4.md'
 
-mdLinks(path2).then((result)=>{
+mdLinks(path5).then((result)=>{
     myCowSays("File reading successfully!!\n We've found next links:","oO");
     console.log(result);
   })

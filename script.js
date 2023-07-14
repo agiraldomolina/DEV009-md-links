@@ -1,5 +1,6 @@
 const fs =require('fs');
 const path=require('path');
+const axios=require('axios');
 
 const checkIsPath=(path)=>{
     let  result
@@ -18,7 +19,7 @@ const checkIsPath=(path)=>{
 const toAbsolute=(myPath)=>{
     return path.resolve(myPath);
 }
- console.log(toAbsolute('myText1.txt'));
+//console.log(toAbsolute('myText1.txt'));
 // console.log(toAbsolute('./filesTest/myText2.txt'));
 
 const isMDFile=(myPath)=>{
@@ -31,7 +32,8 @@ const readingFile=(myPath)=>{
     return new Promise((resolve,reject)=>{
         const absolutePath=toAbsolute(myPath);
         fs.readFile(absolutePath,'utf-8',(error,fileContent)=>{
-            if(isMDFile){
+            if(isMDFile(myPath)){
+                // console.log(absolutePath);
                 const linksEncontrados=searchingLinks(fileContent,absolutePath);
                 resolve(linksEncontrados);
             }else{
@@ -48,14 +50,89 @@ const searchingLinks=(data,myPath)=>{
         while ((match=linkRegex.exec(data))){
             const linkText=match[1];
             const linkUrl=match[2];
-            links.push({text:linkText, url:linkUrl, file: toAbsolute(myPath)})
+            links.push({text:linkText, url:linkUrl, file: correctDoubleBackSlash(myPath)})
         }
     return links
 };
+
+
+const objectLinksExample=[
+    {
+      text: 'Generalidades del protocolo HTTP - MDN',
+      url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
+      file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+    },
+    {
+      text: 'Mensajes HTTP - MDN',
+      url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Messages',
+      file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+    },
+    {
+      text: 'Mensajes HTTP - MDN',
+      url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Messages',
+      file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+    },
+    {
+      text: 'Link roto',
+      url: 'https://www.youtube.com/01RHn23Bn_0',
+      file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+    },
+    {
+      text: 'Módulos, librerías, paquetes, frameworks... ¿cuál es la diferencia?',
+      url: 'http://community.laboratoria.la/t/modulos-librerias-paquetes-frameworks-cual-es-la-diferencia/175',
+      file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+    }
+  ];
+ //console.log(objectLinksExample); 
+
+ const correctDoubleBackSlash=(pathString)=>{
+    return pathString.replace('/\\', '/\/')
+ }
+// console.log('correcting double backslash');
+//  console.log(correctDoubleBackSlash('C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'));
+    
+function validateFoundedLinks(foundedLinks){
+    const requestAxios=foundedLinks.map(link=>{
+        return axios.get(link.url)
+        .then(response=>{
+            link.status=response.status
+            link.info='Valid'
+            return link
+        })
+        .catch(error=>{
+            // console.log(link.url);
+            link.status=error.message;
+            link.info='Broken';
+            return link
+        })
+    })
+    return Promise.all(requestAxios)
+};
+
+validateFoundedLinks(objectLinksExample)
+  .then(resultado => {
+    console.log('resultado de validateFoundedLinks');
+    console.log('Links found:', resultado)
+  })
+  .catch(error => {
+    console.error('Error',error)
+  })
+
+
+
+// const absPath = path.resolve('./test1.md')
+// console.log('usin normalize');
+// const normPath=path.normalize('C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md')
+// // console.log(absPath);
+// // console.log(path.resolve(absPath));
+//  console.log(normPath);
+
+//console.log(validateFoundedLinks(objectLinksExample));
 
 module.exports={
     checkIsPath,
     toAbsolute,
     isMDFile,
-    readingFile
+    readingFile,
+    validateFoundedLinks
 }
