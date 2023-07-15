@@ -100,14 +100,14 @@ function validateFoundedLinks(foundedLinks){
     return Promise.all(requestAxios)
 };
 
-validateFoundedLinks(objectLinksExample)
-  .then(resultado => {
-    console.log('resultado de validateFoundedLinks');
-    console.log('Links found:', resultado)
-  })
-  .catch(error => {
-    console.error('Error',error)
-  })
+// validateFoundedLinks(objectLinksExample)
+//   .then(resultado => {
+//     console.log('resultado de validateFoundedLinks');
+//     console.log('Links found:', resultado)
+//   })
+//   .catch(error => {
+//     console.error('Error',error)
+//   })
 
 
 

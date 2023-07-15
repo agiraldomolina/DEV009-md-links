@@ -15,7 +15,7 @@ const pathWithoutLinks='mdFiles\\test4.md' // valid path but empty file
 const pathNotMDFile='mdFiles\\myText2.txt'
 
 describe('readingFile',()=>{
-  it("Should return an object with one element",async()=>{
+  it("Should return an array with an object with one element",()=>{
 
     const expectedLinks = [
       {
@@ -26,11 +26,14 @@ describe('readingFile',()=>{
     ];
 
     const filePath='./mdFiles/ejemplo2.md'
-    const result=await readingFile(filePath);
-
-    expect(result).toStrictEqual(expectedLinks)
+    return readingFile(filePath).then(result=>{
+      expect(result).toStrictEqual(expectedLinks)
+    });
   })
-})
+});
+
+describe('validateFoundedLinks')
+
 
 it ("Should return true for path: './mdFiles/test3.md'", ()=>{
   const result=isMDFile('./mdFiles/test3.md');
