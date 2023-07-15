@@ -2,10 +2,11 @@ const {
     checkIsPath,
     isAFile,
     isMDFile,
-    readingFile
+    readingFile,
+    validateFoundedLinks
 } =require ('./script');
 
-const mdLinks=(myPath)=>{
+const mdLinks=(myPath, validate=false)=>{
     return new Promise((resolve,reject)=>{
         if(!checkIsPath(myPath)){
             reject(new Error('Path is invalid'))
@@ -15,7 +16,17 @@ const mdLinks=(myPath)=>{
             return
         }else{
             readingFile(myPath).then(links=>{
-              links.length > 0?resolve(links):reject(new Error("The file has not links"))
+                try {
+                    if (links.length >0){
+                        if(validate){
+                            resolve(validateFoundedLinks(links))
+                        }else{
+                            resolve(links)
+                        }
+                      }
+                } catch (error) {
+                    console.error('Error',error)
+                }              
             })
             return;
         }          
