@@ -12,15 +12,6 @@ const checkIsPath=(path)=>{
         return result       
     }
 };
-//console.log(checkIsPath('myText4.txt'));
-//console.log(checkIsPath('./myText2.txt'));
-//console.log(checkIsPath('myText1.txt'));
-
-const toAbsolute=(myPath)=>{
-    return path.resolve(myPath);
-}
-//console.log(toAbsolute('myText1.txt'));
-// console.log(toAbsolute('./filesTest/myText2.txt'));
 
 const isMDFile=(myPath)=>{
     const result=path.extname(myPath)==='.md'?true:false;
@@ -30,7 +21,7 @@ const isMDFile=(myPath)=>{
 // Creating a promise for readingFile
 const readingFile=(myPath)=>{
     return new Promise((resolve,reject)=>{
-        const absolutePath=toAbsolute(myPath);
+        const absolutePath=path.resolve(myPath);
         fs.readFile(absolutePath,'utf-8',(error,fileContent)=>{
             if(isMDFile(myPath)){
                 // console.log(absolutePath);
@@ -109,14 +100,14 @@ function validateFoundedLinks(foundedLinks){
     return Promise.all(requestAxios)
 };
 
-// validateFoundedLinks(objectLinksExample)
-//   .then(resultado => {
-//     console.log('resultado de validateFoundedLinks');
-//     console.log('Links found:', resultado)
-//   })
-//   .catch(error => {
-//     console.error('Error',error)
-//   })
+validateFoundedLinks(objectLinksExample)
+  .then(resultado => {
+    console.log('resultado de validateFoundedLinks');
+    console.log('Links found:', resultado)
+  })
+  .catch(error => {
+    console.error('Error',error)
+  })
 
 
 
@@ -131,7 +122,7 @@ function validateFoundedLinks(foundedLinks){
 
 module.exports={
     checkIsPath,
-    toAbsolute,
+    //toAbsolute,
     isMDFile,
     readingFile,
     validateFoundedLinks

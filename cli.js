@@ -15,12 +15,12 @@ const path='./test1.md';
 // With next path we can check for errors:
 const path1='./test2.md'   // without links
 const path2='./test4.md'   // not exist
-const path3='./myText2.txt'  // not md file
+const path3='./mdFiles/myText2.txt'  // not md file
 const path4='./mdFiles/test3.md'
 const path5='./mdFiles/test4.md'
 
-mdLinks(path3,true).then((result)=>{
-    myCowSays("File reading successfully!!\n We've found next links:","oO");
+mdLinks('./ejemplo2.md',false).then((result)=>{
+    //myCowSays("File reading successfully!!\n We've found next links:","oO");
     console.log(result);
   })
   .catch((error)=>{
