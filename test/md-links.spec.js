@@ -68,6 +68,16 @@ const ObjectLinksWithStatus=[
   }
 ];
 
+const objectEjemplo2WithStatus=[
+  {
+    text: 'Generalidades del protocolo HTTP - MDN',
+    url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
+    file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\ejemplo2.md',
+    status: 200,
+    info: 'Valid'
+  }
+]
+
 /////////////////////////////////////////////
 
 describe('readingFile',()=>{
@@ -118,6 +128,12 @@ describe('mdLinks', () => {
     expect(typeof mdLinks).toBe('object')
   });
 
+  it('Should return an array with one object',()=>{
+    return mdLinks('/mdFiles/ejemplo2.md',true).then(result=>{
+      expect(result).toEqual(objectEjemplo2WithStatus)
+    })
+  })
+
   // it('Deberia devolver un array de objetos (text,href,file)', () => {
   //   const ruta = 'ejemplo2.md'
   //   return mdLinks(ruta, { validate: false }).then((arr) => {
@@ -131,6 +147,8 @@ describe('mdLinks', () => {
   //     ])
   //   })
   // })
+
+  
 
   
 

@@ -33,4 +33,8 @@ const mdLinks=(myPath, validate=false)=>{
     })
   };
 
+//   mdLinks('./mdFiles/ejemplo2.md',true).then(result=>{
+//     console.log(result);
+//   })
+
   module.exports={mdLinks};
