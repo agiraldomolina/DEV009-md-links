@@ -1,5 +1,5 @@
 
-const mdLinks = require('../index.js');
+//const mdLinks = require('../index.js');
 
 const {
   checkIsPath,
@@ -7,7 +7,8 @@ const {
   isMDFile,
   readingFile,
   searchingLinks,
-  validateFoundedLinks
+  validateFoundedLinks,
+  mdLinks
 } =require ('../script');
 
 const pathWithLinks='mdFiles\\test3.md' // valid path with links
@@ -133,6 +134,39 @@ describe('mdLinks', () => {
       expect(result).toEqual(objectEjemplo2WithStatus)
     })
   })
+
+  // Mock para axios (simulamos respuestas exitosas y fallidas)
+jest.mock('axios', () => ({
+  get: jest.fn((url) => {
+    if (url === 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview') {
+      return Promise.resolve({ status: 200 });
+    } else {
+      return Promise.reject(new Error('404 Not Found'));
+    }
+  }),
+}));
+
+describe('mdLinks', () => {
+  test('should return an array of links with validation', () => {
+    const myPath = './mdFiles/ejemplo2.md';
+    const validate = true;
+
+    return mdLinks(myPath, validate).then((links) => {
+      // Aquí verificamos que la respuesta coincida con lo esperado
+      expect(links).toEqual([
+        {
+          text: 'Generalidades del protocolo HTTP - MDN',
+          url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
+          file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\ejemplo2.md',
+          status: 200,
+          info: 'Valid',
+        },
+      ]);
+    });
+  });
+
+  // Agrega más pruebas si lo deseas
+});
 
   // it('Deberia devolver un array de objetos (text,href,file)', () => {
   //   const ruta = 'ejemplo2.md'
