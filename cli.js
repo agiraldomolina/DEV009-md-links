@@ -1,4 +1,4 @@
-const {mdLinks}=require('./index.js');
+const {mdLinks}=require('./script.js');
 const cowsay = require("cowsay");
 
 const myCowSays =(string,eyes)=>{

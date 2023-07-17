@@ -1,5 +1,5 @@
 
-const mdLinks = require('../index.js');
+//const mdLinks = require('../index.js');
 
 const {
   checkIsPath,
@@ -7,7 +7,8 @@ const {
   isMDFile,
   readingFile,
   searchingLinks,
-  validateFoundedLinks
+  validateFoundedLinks,
+  mdLinks
 } =require ('../script');
 
 const pathWithLinks='mdFiles\\test3.md' // valid path with links
@@ -133,6 +134,7 @@ describe('mdLinks', () => {
       expect(result).toBeDefined()
     })
   })
+});
 
   // test('should return an array of links with validation', () => {
   //   const myPath = '../mdFiles/ejemplo2.md';
@@ -158,7 +160,7 @@ describe('mdLinks', () => {
     //       info: 'Valid',
     //     },
     //   ]);
-    });
+
   
 
 
@@ -243,6 +245,4 @@ describe('mdLinks', () => {
   // it('should return an error if the file is not a md file', () => {
   //   return expect(mdLinks('mytext2.txt')).rejects.toThrowError('File is not a MD file');
   // })
-
-
 
