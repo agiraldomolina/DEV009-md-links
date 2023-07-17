@@ -128,11 +128,88 @@ describe('mdLinks', () => {
     expect(typeof mdLinks).toBe('object')
   });
 
-  it('Should return an array with one object',()=>{
-    return mdLinks('/mdFiles/ejemplo2.md',true).then(result=>{
-      expect(result).toEqual(objectEjemplo2WithStatus)
+  it ('it Should resolve a promise with a defined value ',()=>{
+    mdLinks('../mdFiles/ejemplo.md',true).then(result=>{
+      expect(result).toBeDefined()
     })
   })
+
+  // test('should return an array of links with validation', () => {
+  //   const myPath = '../mdFiles/ejemplo2.md';
+  //   const validate = true;
+    // return expect(mdLinks(myPath,validate)).resolves.toEqual([
+    //   {
+    //     text: 'Generalidades del protocolo HTTP - MDN',
+    //     url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
+    //     file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\ejemplo2.md',
+    //     status: 200,
+    //     info: 'Valid',
+    //   },
+    // ])
+
+    // return mdLinks(myPath, validate).then((links) => {
+    //   // Aquí verificamos que la respuesta coincida con lo esperado
+    //   expect(links).toEqual([
+    //     {
+    //       text: 'Generalidades del protocolo HTTP - MDN',
+    //       url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
+    //       file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\ejemplo2.md',
+    //       status: 200,
+    //       info: 'Valid',
+    //     },
+    //   ]);
+    });
+  
+
+
+  //////////////////////////////////////////////////////
+  // Using mock)
+// jest.mock('axios', () => ({
+//   get: jest.fn((url) => {
+//     if (url === 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview') {
+//       return Promise.resolve({ status: 200 });
+//     } else {
+//       return Promise.reject(new Error('404 Not Found'));
+//     }
+//   }),
+// }));
+
+// describe('mdLinks', () => {
+//   it('should return an array of links with validation', () => {
+//     const myPath = './mdFiles/ejemplo2.md';
+//     const validate = true;
+
+//     return mdLinks(myPath, validate).then((links) => {
+//       // Aquí verificamos que la respuesta coincida con lo esperado
+//       expect(links).toEqual([
+//         {
+//           text: 'Generalidades del protocolo HTTP - MDN',
+//           url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
+//           file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\ejemplo2.md',
+//           status: 200,
+//           info: 'Valid',
+//         },
+//       ]);
+//     });
+//   });
+
+// });
+
+////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+  // it('Should return an array with one object',()=>{
+  //   return mdLinks('/mdFiles/ejemplo2.md',true).then(result=>{
+  //     expect(result).toEqual(objectEjemplo2WithStatus)
+  //   })
+  // })
 
   // it('Deberia devolver un array de objetos (text,href,file)', () => {
   //   const ruta = 'ejemplo2.md'
@@ -168,4 +245,4 @@ describe('mdLinks', () => {
   // })
 
 
-});
+

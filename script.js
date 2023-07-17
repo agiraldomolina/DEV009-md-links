@@ -34,6 +34,10 @@ const readingFile=(myPath)=>{
     })
 };
 
+readingFile('./mdFiles/ejemplo2.md').then(result=>{
+    console.log(result);
+})
+
 const searchingLinks=(data,myPath)=>{
     const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
         const links=[];
