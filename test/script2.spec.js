@@ -1,4 +1,4 @@
-const findMDFilesFromDir=require('../utils.js')
+const findMDFilesFromDir=require('../script2.js')
 
 
 const filesFoundedMDFiles=[
@@ -7,7 +7,13 @@ const filesFoundedMDFiles=[
   ];
 
 describe('findMDFilesFromDir',()=>{
+
     it('should be a function ', () => {
         expect(typeof findMDFilesFromDir).toBe('function')
       });
+
+      it('Should return an array with four elements',()=>{
+        const result= findMDFilesFromDir('./mdFiles');
+        expect(result).toEqual(filesFoundedMDFiles)
+      })
   })

@@ -4,7 +4,7 @@ const path=require('path');
 const {
     checkIsPath,
     isMDFile,
-} =require ('./script');
+} =require ('./script1');
 
 
 

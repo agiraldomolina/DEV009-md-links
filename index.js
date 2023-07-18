@@ -3,7 +3,7 @@ const {
     isMDFile,
     readingFile,
     validateFoundedLinks
-} =require ('./script');
+} =require ('./script1');
 
 const mdLinks=(myPath, validate=false)=>{
     return new Promise((resolve,reject)=>{

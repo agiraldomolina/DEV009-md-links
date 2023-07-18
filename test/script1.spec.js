@@ -4,7 +4,7 @@ const {
     readingFile,
     searchingLinks,
     validateFoundedLinks,
-  } =require ('../script');
+  } =require ('../script1');
   
   const pathWithLinks='mdFiles\\test3.md' // valid path with links
   const pathWithoutLinks='mdFiles\\test4.md' // valid path but empty file
