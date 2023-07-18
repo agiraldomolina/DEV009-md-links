@@ -1,4 +1,4 @@
-const {mdLinks}=require('./script.js');
+const mdLinks=require('./index.js');
 const cowsay = require("cowsay");
 
 const myCowSays =(string,eyes)=>{
@@ -17,9 +17,9 @@ const path1='./test2.md'   // without links
 const path2='./test4.md'   // not exist
 const path3='./mdFiles/myText2.txt'  // not md file
 const path4='./mdFiles/test3.md'
-const path5='./mdFiles/test4.md'
+const path5='./mdFiles/ejemplo2.md'
 
-mdLinks('./ejemplo42.md',false).then((result)=>{
+mdLinks(path5,true).then((result)=>{
     myCowSays("File reading successfully!!\n We've found next links:","oO");
     console.log(result);
   })
