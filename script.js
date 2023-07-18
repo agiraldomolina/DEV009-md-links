@@ -57,6 +57,8 @@ function validateFoundedLinks(foundedLinks){
     return Promise.all(requestAxios)
 };
 
+
+
 module.exports={
     checkIsPath,
     isMDFile,

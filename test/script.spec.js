@@ -3,7 +3,7 @@ const {
     isMDFile,
     readingFile,
     searchingLinks,
-    validateFoundedLinks
+    validateFoundedLinks,
   } =require ('../script');
   
   const pathWithLinks='mdFiles\\test3.md' // valid path with links
@@ -62,15 +62,7 @@ const {
     }
   ];
   
-  const objectEjemplo2WithStatus=[
-    {
-      text: 'Generalidades del protocolo HTTP - MDN',
-      url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
-      file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\ejemplo2.md',
-      status: 200,
-      info: 'Valid'
-    }
-  ]
+  
   
   /////////////////////////////////////////////
   
@@ -105,4 +97,6 @@ const {
       const result = checkIsPath('./mdFiles/myText2.txt');
       expect(result).toBe(true)
     })
-  })
+  });
+
+  
