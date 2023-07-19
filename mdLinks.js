@@ -1,13 +1,13 @@
-import{
+const {
     checkIsPath,
     toAbsolute,
     isAFile,
     isMDFile,
     readingFile,
     searchingLinks,
-  } from './script.js' 
-  
-  import * as cowsay from "cowsay";
+  }= require('./script.js');
+
+  const cowsay=require('cowsay')
 
 const myCowSays =(string)=>{
   console.log(cowsay.say({
@@ -17,7 +17,7 @@ const myCowSays =(string)=>{
   }));
 };
   
- export const mdLinks=(path)=>{
+ const mdLinks=(path)=>{
         const linksPromise= new Promise((resolve,reject)=>{
             if(!checkIsPath(path)){
                 reject(new Error('Path is invalid'))
@@ -47,3 +47,4 @@ const myCowSays =(string)=>{
 //     // .catch(err=>{
 //     //     console.error(err)
 //     // });
+module.exports

@@ -20,6 +20,7 @@ const readingFile=(myPath)=>{
     })
 };
 
+
 // readingFile('./mdFiles/ejemplo2.md').then(resul=>{
 //     console.log(resul);
 // });

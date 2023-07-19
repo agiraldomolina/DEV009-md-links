@@ -5,6 +5,9 @@ const {
     validateFoundedLinks
 } =require ('./script1');
 
+const findMDFilesFromDir=require('./script2.js')
+
+
 const mdLinks=(myPath, validate=false)=>{
     return new Promise((resolve,reject)=>{
         if(!checkIsPath(myPath)){
@@ -29,9 +32,9 @@ const mdLinks=(myPath, validate=false)=>{
     })
   };
 
- //nodeconsole.log(typeof(mdLinks));
+ //console.log(typeof(mdLinks));
 
-//   mdLinks('./mdFiles/ejemplo2.md',true).then(result=>{
+//   mdLinks('./mdFiles',true).then(result=>{
 //     console.log(result);
 //   })
 
