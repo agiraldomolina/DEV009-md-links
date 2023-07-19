@@ -91,7 +91,7 @@ describe('findMDFilesFromDir',()=>{
       expect(typeof findLinksInMarkdownFiles).toBe('function')
     });
 
-    it('Should return an array with tuwlve elements',()=>{
+    it('Should return an array with twelve objects with information about links and their status',()=>{
       return findLinksInMarkdownFiles('./mdFiles').then(result=>{
         expect(result).toEqual(linksFounded)
       })
