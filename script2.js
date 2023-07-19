@@ -2,23 +2,35 @@ const fs =require('fs');
 const path=require('path');
 
 const {
-    checkIsPath,
     isMDFile,
     readingFile
 } =require ('./script1');
 const { list } = require('cowsay');
 
+/**
+ * Next function recursively finds all markdown files in the specified directory path and its subdirectories.
+ *
+ * @param {string} myPath - The directory path to search for markdown files.
+ * @returns {Array<string>} An array of strings containing the file paths of all the markdown files found.
+ */
 const findMDFilesFromDir=(myPath)=>{
     let listFiles=[];
+    // Resolve the provided path to make sure it is an absolute path.
     myPath=path.resolve(myPath);
+    // Check if the resolved path corresponds to a directory.
     if(fs.statSync(myPath).isDirectory()){
+      // Read the files in the directory.
         const findedFiles=fs.readdirSync(myPath);
+        // Iterate through each file found.
         findedFiles.forEach(file=>{
+            // Recursively call the function to find markdown files in subdirectories.
             listFiles=listFiles.concat(findMDFilesFromDir(`${myPath}\\${file}`))
         })
     }else{
-        listFiles.push(myPath)
+      // If the path corresponds to a file and it is a markdown file, add it to the list.
+        if (isMDFile(myPath)) listFiles.push(myPath)
     }
+    // Filter the list of files to include only those that are markdown files.
     return listFiles.filter(file=>isMDFile(file));
 };
 
@@ -26,19 +38,32 @@ console.log(typeof(findMDFilesFromDir));
 const path6='./mdFiles';
 console.log(findMDFilesFromDir(path6));
 
+/////////////////////////////////////////////////////////////////////////////
+/**
+ * Next function finds all the links present in markdown files within the specified directory path.
+ *
+ * @param {string} myPath - The directory path to search for markdown files.
+ * @returns {Promise<Array<string>>} A Promise that resolves to an array of strings containing all the links found.
+ * If no links are found or an error occurs during the process, it resolves to an empty array.
+ */
+
 
 const findLinksInMarkdownFiles = (myPath) => {
+  // Find all markdown files within the specified directory path.
     const mdFiles = findMDFilesFromDir(myPath);
+  // Create an array of promises for reading each markdown file.
     const promises = mdFiles.map((file) => readingFile(file));
   
+  // Use Promise.all to execute all the file reading promises concurrently.  
     return Promise.all(promises)
       .then((results) => {
-        // Concatenamos todos los enlaces encontrados en un único array.
+        // Concatenate all the links found in the markdown files into a single array.
         const links = results.reduce((acc, curr) => acc.concat(curr), []);
         return links;
       })
-      .catch((err) => {
-        console.error('Error:', err);
+      .catch((error) => {
+        // In case of an error, log the error and return an empty array.
+        console.error('Error:', error);
         return [];
       });
   };
@@ -55,56 +80,7 @@ findLinksInMarkdownFiles(myFolderPath)
     console.error('Error al buscar enlaces:', err);
   });
 
-// const getContent=(myPath)=>{
-//     const isDir=fs.statSync(myPath).isDirectory();
-//     if (isDir){
-//         const files=findMDFilesFromDir(myPath);
-//         console.log(files);
-//         let listLinks=[];
-//         const allLinks=files.map(file=>{
-//             readingFile(file).then(links=>{
-//                 listLinks.push(links)
-//             })
-//             console.log(listLinks);
-//         });
-//         if(allLinks===0) throw new Error ('nada de nada')
-//         return Promise.all(allLinks).
-//         then(linksFounded=>linksFounded.flat())
-//     }
-//     return readingFile(myPath)
-// };
-
-// console.log(getContent('./mdFiles'));
-
-
-
-// const fecthLinksFromDir=(myPath)=>{
-//     return new Promise((resolve,reject)=>{
-//         const mdFilesFounded=findMDFilesFromDir(myPath);
-//         console.log(mdFilesFounded);
-//         if (mdFilesFounded.length>0){
-//             const arrayWithAllLinks=mdFilesFounded.map(eachMDFile=>{
-//                 readingFile(eachMDFile).then(arrayLinks=>{arrayLinks
-//                 })
-//             })
-//             let singleArrayLinks=[];
-//             Promise.all(arrayWithAllLinks).then(arrayLinks=>{
-//                 arrayLinks.forEach(array=>{
-//                     singleArrayLinks=singleArrayLinks.concat(array);
-//                 })
-//                 resolve(Promise.all(singleArrayLinks))
-//             })
-            
-//         }else{
-//             reject(new Error ('MD files do not finded'))
-//         }
-//     })
-// }
-
-
-
-// fecthLinksFromDir('./mdFiles').then(result=>{
-//     console.log(result);
-// })
-
-module.exports=findMDFilesFromDir
+module.exports={
+  findMDFilesFromDir,
+  findLinksInMarkdownFiles
+}
