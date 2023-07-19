@@ -5,17 +5,16 @@ const {
     validateFoundedLinks
 } =require ('./script1');
 
-const findMDFilesFromDir=require('./script2.js')
+const {findMDFilesFromDir,
+    findLinksInMarkdownFiles}=require('./script2.js')
 
 
 const mdLinks=(myPath, validate=false)=>{
     return new Promise((resolve,reject)=>{
         if(!checkIsPath(myPath)){
             reject(new Error('Path is invalid'))
-        }else if (!isMDFile(myPath)){
-            reject(new Error ("File is not a MD file"))
         }else{
-            readingFile(myPath).then(links=>{
+            findLinksInMarkdownFiles(myPath).then(links=>{
                 try {
                     if (links.length >0){
                         if(validate){
@@ -31,8 +30,6 @@ const mdLinks=(myPath, validate=false)=>{
         }          
     })
   };
-
- //console.log(typeof(mdLinks));
 
 //   mdLinks('./mdFiles',true).then(result=>{
 //     console.log(result);

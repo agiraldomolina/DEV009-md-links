@@ -34,9 +34,9 @@ const findMDFilesFromDir=(myPath)=>{
     return listFiles.filter(file=>isMDFile(file));
 };
 
-console.log(typeof(findMDFilesFromDir));
-const path6='./mdFiles';
-console.log(findMDFilesFromDir(path6));
+// console.log(typeof(findMDFilesFromDir));
+// const path6='./mdFiles';
+// console.log(findMDFilesFromDir(path6));
 
 /////////////////////////////////////////////////////////////////////////////
 /**
@@ -69,16 +69,15 @@ const findLinksInMarkdownFiles = (myPath) => {
   };
   
 
-const myFolderPath = './mdFiles';
-findLinksInMarkdownFiles(myFolderPath)
-  .then((links) => {
-    console.log('Enlaces encontrados:');
-    console.log(links);
-    console.log(`${links.length} finded`);
-  })
-  .catch((err) => {
-    console.error('Error al buscar enlaces:', err);
-  });
+// const myFolderPath = './mdFiles';
+// findLinksInMarkdownFiles(myFolderPath)
+//   .then((links) => {
+//     console.log('Enlaces encontrados:');
+//     console.log(links);
+//   })
+//   .catch((err) => {
+//     console.error('Error al buscar enlaces:', err);
+//   });
 
 module.exports={
   findMDFilesFromDir,
