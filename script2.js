@@ -6,8 +6,6 @@ const {
     isMDFile,
 } =require ('./script1');
 
-
-
 const findMDFilesFromDir=(myPath)=>{
     let listFiles=[];
     myPath=path.resolve(myPath);
@@ -23,9 +21,9 @@ const findMDFilesFromDir=(myPath)=>{
     return listFiles.filter(file=>isMDFile(file))
 }
 
-// console.log(typeof(findMDFilesFromDir));
-// const path6='./mdFiles';
-// console.log(path.resolve(path6));
-// console.log(findMDFilesFromDir(path6));
+console.log(typeof(findMDFilesFromDir));
+const path6='./mdFiles';
+//console.log(path.resolve(path6));
+console.log(findMDFilesFromDir(path6));
 
 module.exports=findMDFilesFromDir
