@@ -2,7 +2,7 @@ const {
     checkIsPath,
     isMDFile,
     readingFile,
-    validateFoundedLinks
+    validateFoundLinks
 } =require ('./script1');
 
 const {findMDFilesFromDir,
@@ -31,7 +31,7 @@ const mdLinks=(myPath, validate=false)=>{
                     if (links.length >0){
                         // If there are links found, optionally validate them based on the 'validate' flag.
                         if(validate){
-                            resolve(validateFoundedLinks(links))
+                            resolve(validateFoundLinks(links))
                         }else{
                             resolve(links)
                         }

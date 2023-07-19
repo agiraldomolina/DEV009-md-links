@@ -41,7 +41,7 @@ const searchingLinks=(data,myPath)=>{
     return pathString.replace('/\\', '/\/')
  }
 
-function validateFoundedLinks(foundedLinks){
+function validateFoundLinks(foundedLinks){
     const requestAxios=foundedLinks.map(link=>{
         return axios.get(link.url)
         .then(response=>{
@@ -64,5 +64,5 @@ module.exports={
     checkIsPath,
     isMDFile,
     readingFile,
-    validateFoundedLinks
+    validateFoundLinks
 }

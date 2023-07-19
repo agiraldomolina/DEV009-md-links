@@ -3,7 +3,7 @@ const {
     isMDFile,
     readingFile,
     searchingLinks,
-    validateFoundedLinks,
+    validateFoundLinks,
   } =require ('../script1');
   
   const pathWithLinks='mdFiles\\test3.md' // valid path with links
@@ -81,9 +81,9 @@ const {
       });
     })
   });
-  describe('validateFoundedLinks',()=>{
+  describe('validateFoundLinks',()=>{
     it('Should return an array with with four objects with information about their status link',()=>{
-      return validateFoundedLinks(objectLinksExample).then(result=>{
+      return validateFoundLinks(objectLinksExample).then(result=>{
         expect(result).toStrictEqual(ObjectLinksWithStatus)
       })
     })
