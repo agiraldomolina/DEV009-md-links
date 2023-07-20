@@ -6,7 +6,8 @@ const {
 } =require ('./script1');
 
 const {findMDFilesFromDir,
-    findLinksInMarkdownFiles}=require('./script2.js')
+    findLinksInMarkdownFiles,
+    fetchStats}=require('./script2.js')
 
 /**
  * Finds and optionally validates links present in markdown files within the specified directory path.
@@ -19,7 +20,7 @@ const {findMDFilesFromDir,
  *                                   representing the validated links.
  * @throws {Error} If the provided path is invalid or if any error occurs during the process.
  */
-const mdLinks=(myPath, validate=false)=>{
+const mdLinks=(myPath, validate=false, stats=false)=>{
     return new Promise((resolve,reject)=>{
         // Check if the provided path is valid.
         if(!checkIsPath(myPath)){
@@ -34,6 +35,9 @@ const mdLinks=(myPath, validate=false)=>{
                             resolve(validateFoundLinks(links))
                         }else{
                             resolve(links)
+                        }
+                        if(stats){
+                            resolve(fetchStats(links))
                         }
                       }else{
                         // Resolve with an empty array if no links are found.

@@ -80,32 +80,38 @@ const findLinksInMarkdownFiles = (myPath) => {
 //   });
 
 
-// async function main() {
-//   try {
-//     const fff = await findLinksInMarkdownFiles('./mdFiles');
-//     //console.log(fff);
-//     console.log(fetchStats(fff));
-//   } catch (error) {
-//     console.error('Error:', error);
-//   }
-// }
+async function main() {
+  try {
+    const fff = await findLinksInMarkdownFiles('./mdFiles');
+    //console.log(fff);
+    // console.log(fetchStats(fff));
+    const stats=fetchStats(fff)
+    console.log(`Total links: ${stats.total}\nUniques links: ${stats.Unique}`);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
 
-// main();
+main();
 
 const fetchStats=(linksFound)=>{
   const arrayUniqueLinks=new Set();
-  linksFound.map(link=>{
-    arrayUniqueLinks.add(link.url)
-  });
+  linksFound.map(link=> arrayUniqueLinks.add(link.url));
   return {
     total: linksFound.length,
     Unique: arrayUniqueLinks.size
   };
 };
 
+// const fetchValidateStats=(linksFound)=>{
+//   const arrayUniqueLinks=new Set();
+
+// }
+
 // console.log(fetchStats(findLinksInMarkdownFiles('./mdFiles')));
 
 module.exports={
   findMDFilesFromDir,
-  findLinksInMarkdownFiles
+  findLinksInMarkdownFiles,
+  fetchStats
 }

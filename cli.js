@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const mdLinks=require('./index.js');
 const cowsay = require("cowsay");
 
@@ -9,17 +11,12 @@ const myCowSays =(string,eyes)=>{
   }));
 };
 
-// This path is used to consume the promise
-// But later this path should be an argument for the module
-const path='./test1.md';
-// With next path we can check for errors:
-const path1='./test2.md'   // without links
-const path2='./test4.md'   // not exist
-const path3='./mdFiles/myText2.txt'  // not md file
-const path4='./mdFiles/test3.md'
-const path5='./mdFiles/ejemplo2.md'
+const myPath=process.argv[2];
 
-mdLinks('./mdFiles',false).then((result)=>{
+const validate=process.argv.some((arg)=>arg==='--validate');
+const stats=process.argv.some((arg)=>arg==='--stats');
+
+  mdLinks(myPath, validate,stats).then((result)=>{
     myCowSays("File reading successfully!!\n We've found next links:","oO");
     console.log(result);
   })
@@ -27,4 +24,13 @@ mdLinks('./mdFiles',false).then((result)=>{
     myCowSays("Something went wrong","xx");
     console.error(error)
   });
+
+// mdLinks('./mdFiles',false).then((result)=>{
+//     myCowSays("File reading successfully!!\n We've found next links:","oO");
+//     console.log(result);
+//   })
+//   .catch((error)=>{
+//     myCowSays("Something went wrong","xx");
+//     console.error(error)
+//   });
 
