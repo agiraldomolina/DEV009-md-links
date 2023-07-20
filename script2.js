@@ -79,6 +79,32 @@ const findLinksInMarkdownFiles = (myPath) => {
 //     console.error('Error al buscar enlaces:', err);
 //   });
 
+
+// async function main() {
+//   try {
+//     const fff = await findLinksInMarkdownFiles('./mdFiles');
+//     //console.log(fff);
+//     console.log(fetchStats(fff));
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// }
+
+// main();
+
+const fetchStats=(linksFound)=>{
+  const arrayUniqueLinks=new Set();
+  linksFound.map(link=>{
+    arrayUniqueLinks.add(link.url)
+  });
+  return {
+    total: linksFound.length,
+    Unique: arrayUniqueLinks.size
+  };
+};
+
+// console.log(fetchStats(findLinksInMarkdownFiles('./mdFiles')));
+
 module.exports={
   findMDFilesFromDir,
   findLinksInMarkdownFiles
