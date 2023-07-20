@@ -20,8 +20,9 @@ const {findMDFilesFromDir,
  *                                   representing the validated links.
  * @throws {Error} If the provided path is invalid or if any error occurs during the process.
  */
-const mdLinks=(myPath, validate=false, stats=false)=>{
+const mdLinks=(myPath, {validate=false})=>{
     return new Promise((resolve,reject)=>{
+        console.log('Hola MUNDO');
         // Check if the provided path is valid.
         if(!checkIsPath(myPath)){
             reject(new Error('Path is invalid'))
@@ -36,13 +37,13 @@ const mdLinks=(myPath, validate=false, stats=false)=>{
                         }else{
                             resolve(links)
                         }
-                        if(stats){
-                            resolve(fetchStats(links))
-                        }
-                      }else{
+                        // if(stats){
+                        //     resolve(fetchStats(links))
+                        // }
+                    }else{
                         // Resolve with an empty array if no links are found.
                         resolve([]);
-                      }
+                    }
                 } catch (error) {
                     // Catch any errors that occurred during the validation process
                     console.error('Error',error)
@@ -57,6 +58,31 @@ const mdLinks=(myPath, validate=false, stats=false)=>{
         }          
     })
   };
+
+//   const checkOptions=(links,options)=>{
+//     new Promise((resolve,reject)=>{
+//         if (options.validate && !options.stats){
+//             validateFoundLinks(links).
+//             then(linksValidated=>{
+//                 resolve(linksValidated)
+//             })
+//             .catch(error=>{
+//                 reject(error)
+//             });
+//         }else if (!options.validate && options.stats){
+//             const stats=fetchStats(links);
+//             const msgStatsResult=`Total links: ${stats.total}\nUniques links: ${stats.Unique}`
+//             resolve(msgStatsResult)
+//         }
+//         else if (options.validate && options.stats){
+//             validateFoundLinks(links)
+//             .then(linksValidated=>{
+//                 const stats=fetchStats(links);
+//                 const msgStatsResult=`Total links: ${stats.total}\nUniques links: ${stats.Unique}`
+//             })
+//         }
+//     })
+//   }
 
 //   mdLinks('./mdFiles',false).then(result=>{
 //     console.log(result);

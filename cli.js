@@ -16,9 +16,10 @@ const myPath=process.argv[2];
 const validate=process.argv.some((arg)=>arg==='--validate');
 const stats=process.argv.some((arg)=>arg==='--stats');
 
-  mdLinks(myPath, validate,stats).then((result)=>{
-    myCowSays("File reading successfully!!\n We've found next links:","oO");
-    console.log(result);
+  mdLinks(myPath, {validate}).then((result)=>{
+    // myCowSays("File reading successfully!!\n We've found next links:","oO");
+    
+    console.log(result, 999);
   })
   .catch((error)=>{
     myCowSays("Something went wrong","xx");
