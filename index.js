@@ -20,9 +20,8 @@ const {findMDFilesFromDir,
  *                                   representing the validated links.
  * @throws {Error} If the provided path is invalid or if any error occurs during the process.
  */
-const mdLinks=(myPath, {validate=false})=>{
+const mdLinks=(myPath, validate=false)=>{
     return new Promise((resolve,reject)=>{
-        console.log('Hola MUNDO');
         // Check if the provided path is valid.
         if(!checkIsPath(myPath)){
             reject(new Error('Path is invalid'))
@@ -32,7 +31,7 @@ const mdLinks=(myPath, {validate=false})=>{
                 try {
                     if (links.length >0){
                         // If there are links found, optionally validate them based on the 'validate' flag.
-                        if(validate){
+                        if(validate===true){
                             resolve(validateFoundLinks(links))
                         }else{
                             resolve(links)
