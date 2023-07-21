@@ -59,7 +59,7 @@ if (!myPath) {
   mdLinks(myPath,validate)
   .then((links)=>{
     msgCow=`Files reading successfully!!\n and ${links.length} were found\n Next you can the stats`
-    myCowSays(msgCow,"00");
+    myCowSays(msgCow,"$$");
     const statsResult = fetchStats(links);
     !validate?
     console.log(`\nTotal links found:\t${statsResult.total}\nUnique links:\t\t${statsResult.unique}`):
