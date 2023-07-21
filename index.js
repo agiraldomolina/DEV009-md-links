@@ -36,9 +36,6 @@ const mdLinks=(myPath, validate=false)=>{
                         }else{
                             resolve(links)
                         }
-                        // if(stats){
-                        //     resolve(fetchStats(links))
-                        // }
                     }else{
                         // Resolve with an empty array if no links are found.
                         resolve([]);
@@ -57,31 +54,6 @@ const mdLinks=(myPath, validate=false)=>{
         }          
     })
   };
-
-//   const checkOptions=(links,options)=>{
-//     new Promise((resolve,reject)=>{
-//         if (options.validate && !options.stats){
-//             validateFoundLinks(links).
-//             then(linksValidated=>{
-//                 resolve(linksValidated)
-//             })
-//             .catch(error=>{
-//                 reject(error)
-//             });
-//         }else if (!options.validate && options.stats){
-//             const stats=fetchStats(links);
-//             const msgStatsResult=`Total links: ${stats.total}\nUniques links: ${stats.Unique}`
-//             resolve(msgStatsResult)
-//         }
-//         else if (options.validate && options.stats){
-//             validateFoundLinks(links)
-//             .then(linksValidated=>{
-//                 const stats=fetchStats(links);
-//                 const msgStatsResult=`Total links: ${stats.total}\nUniques links: ${stats.Unique}`
-//             })
-//         }
-//     })
-//   }
 
 //   mdLinks('./mdFiles',false).then(result=>{
 //     console.log(result);
