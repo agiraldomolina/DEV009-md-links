@@ -12,11 +12,13 @@ const myCowSays =(string,eyes)=>{
   }));
 };
 
+// Command-line arguments to specify path, validation, and statistics options.
 const myPath=process.argv[2];
 const validate =process.argv.some((arg)=>arg==='--validate')?true:false
 const stats=process.argv.some((arg)=>arg==='--stats')?true:false;
 let msgCow
 
+// If no path is provided or if the "--help" option is specified, display usage information.
 if (!myPath) {
   console.log("Please enter", "--help", "to see options");
 } else if (process.argv.includes("--help")) {
@@ -28,23 +30,28 @@ if (!myPath) {
   );
 
 } else if(!validate && !stats){
-  mdLinks(myPath, validate)
+  // When neither validation nor stats options are specified, find and display links without validation.
   mdLinks(myPath,validate)
+  //Asynchronously reads and retrieves links from Markdown files using the `mdLinks` function.
   .then((links)=>{
-    msgCow=`Files reading successfully!!\n and ${links.length} were found `
+    // Display a success message and the total number of links found.
+    msgCow=`Files reading successfully!!\n and ${links.length} links were found `
     myCowSays(msgCow, "oO");
+    //Display links along with their status and info.
     links.forEach(link=>{
       console.log(`\nFile:\t${link.file}\nText:\t${link.text}\nURL:\t${link.url}\n`);
     })
   })
   .catch((error) => {
+    // Display an error message and the details of the encountered error.
     myCowSays("Something went wrong", "xx");
     console.error(error);
   });
 }else if (validate && !stats){
+  // When the validation option is specified, find and display links with validation status.
   mdLinks(myPath,validate)
   .then((links)=>{
-    msgCow=`Files reading successfully!!\n and ${links.length} were found\n Next you can see all links and their status`
+    msgCow=`Files reading successfully!!\n and ${links.length} links were found\n Next you can see all links and their status`
     myCowSays(msgCow,"00");
     links.forEach(link=>{
       console.log(`\nFile:\t${link.file}\nText:\t${link.text}\nURL:\t${link.url}\nStatus:\t${link.status}\nInfo:\t${link.info}`);
@@ -56,9 +63,10 @@ if (!myPath) {
   });
 
 }else if (stats){
+  // When the stats option is specified, find and display link statistics.
   mdLinks(myPath,validate)
   .then((links)=>{
-    msgCow=`Files reading successfully!!\n and ${links.length} were found\n Next you can the stats`
+    msgCow=`Files reading successfully!!\n and ${links.length} links were found\n Next you can the stats`
     myCowSays(msgCow,"$$");
     const statsResult = fetchStats(links);
     !validate?
@@ -71,10 +79,3 @@ if (!myPath) {
   });
 }
   
-     
-// const myPath='./mdFiles/ejemplo2.md'
-// const validate = false;
-// const stats=false;
-
-  
-

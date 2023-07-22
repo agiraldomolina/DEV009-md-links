@@ -1,13 +1,9 @@
 const {
     checkIsPath,
-    isMDFile,
-    readingFile,
     validateFoundLinks
 } =require ('./script1');
 
-const {findMDFilesFromDir,
-    findLinksInMarkdownFiles,
-    fetchStats}=require('./script2.js')
+const {findLinksInMarkdownFiles}=require('./script2.js')
 
 /**
  * Finds and optionally validates links present in markdown files within the specified directory path.
@@ -54,10 +50,5 @@ const mdLinks=(myPath, validate=false)=>{
         }          
     })
   };
-
-//   mdLinks('./mdFiles',false).then(result=>{
-//     console.log(result);
-//     console.log(result.length);
-//   })
 
   module.exports=mdLinks;
