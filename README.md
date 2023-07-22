@@ -8,14 +8,16 @@
 
 En este proyecto se desarrolló una herramienta de línea de comando (CLI) y librería instalable que permite la búsqueda y análisis de links dentro de archivos markdown  (extensión .md) .
 
-[Presentación](#presentacion) •
-[Intalación](#instalacion) •
+[Presentacion](#presentacion) •
+[Instalación](#instalacion) •
 [Diagrama de Flujo](#diagrama-de-flujo) •
-[Tutorial de uso](#tutorial-de-uso) •
+[Tutorial de uso](#tutorial) •
 [Contribuidora](#contribuidora) •
 [Acknowledgments](#acknowledgments)
 
 </div>
+
+<a name='presentacion'></a>
 # Presentación
 
 Herramineto de línea de comando (CLI) y librería instable para correr en cualquier consola.
@@ -27,14 +29,49 @@ La aplicación le permite al usuario  introducir las siguientes opciones:
   - --validate: Para mostrar información concerniente al estado del link
   - --stats: Para mostrar estadísticas relacionadas con los links
 
+<a name='instalacion'></a>
 # Instalación
 
-La herramienta de línea de comando puede ser utilizada directamente en la terminal mediante el comando md-links. Igualmente puede ser instalada mediante digitando en cualquier terminal: 
+La herramienta de línea de comando puede ser utilizada directamente en la terminal mediante el comando md-links. Igualmente puede ser instalada  digitando en cualquier terminal: 
 npm i mdlinks-ang
 
 # Diagrama de Flujo
 
+<a name='tutorial'></a>
 # Tutorial de uso
+
+El ejecutable de esta aplicación se puede correr de la siguiente manera en cualquier terminal:
+md-links <path-to-file> [options]
+El usuario tiene las siguientes opciones:
+
+## md-links
+Si el usuario solamente escribe el nombre de la plicación recibirá un mensaje indicándole que puede invocar un menú de ayuda:
+
+![Alt text](images/justName.png)
+
+## md-links --help
+Agregando la opcón --help se imprimen en pantalla las diferentes opciones disponibles así como los resultados esperados según cada opción:
+
+![Alt text](images/withhelp.png)
+
+## md-links <path>
+Al dar una ruta se pueden presentar diferentes situaciones:
+ - Que el path corresponda directamente a un archivo tipo markdown; en este caso la aplicación lee el archivo y extrae  los links. En pantalla se imprimirá el listado de los links encontrados con su información básica. En el siguiente ejemplo escibimos el nombre del archivo test2.md y obtenemos el siguiente resultado:
+
+ ![Alt text](images/justpath.png)
+
+  - Que el path corresponda a un directorio el cual a su vez puede contener otros directorios y/o directamnete archivos markdown. En este caso la aplicación cuenta con un algoritmo recursivo que se encarga de buscar todos los archivos markdown que se encuentren en directorios  y carpetas; por ejemplo podemos tener el siguiente esquema de directorio:
+
+  ![Alt text](images/seeFolder.png)
+
+  En este caso podríamos escribir la siguiente linea de comando y obtener estos resultados:
+
+![Alt text](images/inDirectory.png)
+
+
+
+ 
+
 
 # Contribuidora
 
