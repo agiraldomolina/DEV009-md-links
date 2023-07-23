@@ -33,7 +33,7 @@ La aplicación le permite al usuario  introducir las siguientes opciones:
 
 ## Con Git
 Digitar en la terminal:
-npm install @agiraldomolina/DEV009-md-links
+npm install @agiraldomolina/mdlinks-ang
 
 ## Con npm
 Digitar en la terminal:
@@ -45,6 +45,7 @@ npm i mdlinks-ang
 ## cli.js
 
 ![Alt text](<images/cli_js (3).jpeg>)
+A partir del archivo cli.js se crea el ejecutable para md-links, a continuación se presenta el diagrama de flujo para el código de esre archivo:
 
 ## Promesa mdLinks
 
@@ -70,7 +71,7 @@ npm i mdlinks-ang
 # Tutorial de uso
 
 El ejecutable de esta aplicación se puede correr de la siguiente manera en cualquier terminal:
-md-links <path-to-file> [options]
+md-links path [options]
 El usuario tiene las siguientes opciones:
 
 ## md-links
@@ -83,7 +84,7 @@ Agregando la opcón --help se imprimen en pantalla las diferentes opciones dispo
 
 ![Alt text](images/withhelp.png)
 
-## md-links <path>
+## md-links path
 Al dar una ruta se pueden presentar diferentes situaciones:
  - Que el path corresponda directamente a un archivo tipo markdown; en este caso la aplicación lee el archivo y extrae  los links. En pantalla se imprimirá el listado de los links encontrados con su información básica. En el siguiente ejemplo escibimos el nombre del archivo test2.md y obtenemos el siguiente resultado:
 
@@ -99,18 +100,18 @@ Al dar una ruta se pueden presentar diferentes situaciones:
 
 En la captura de pantalla no se alcanzan a ver todos los links encontrados, pero el listado corresponde a todods los links encontrados en carpetas y subcarpetas.
 
-## md-links <path> --validate
+## md-links path --validate
 
 En este caso digitamos el nombre de nuestra librería una ruta y la opción --validate. De acuerdo al contenido del archivo se obtiene el siguiente resultado:
 
 ![Alt text](images/withValidate.png)
 
-## md-links --validate --stats
+## md-links path --validate --stats
 La captura de pantalla muestras los resultados cuando se aplican las dos opciones:
 
 ![Alt text](images/withStatsAndValidate.png)
 
-## md-links --stats
+## md-links path --stats
 
 Cuando solo se digita la opción de stats:
 
