@@ -13,7 +13,6 @@ En este proyecto se desarrolló una herramienta de línea de comando (CLI) y lib
 [Diagrama de Flujo](#diagramas) •
 [Tutorial de uso](#tutorial) •
 [Contribuidora](#contribuidora) •
-[Acknowledgments](#acknowledgments)
 
 </div>
 
@@ -60,6 +59,15 @@ npm i mdlinks-ang
 
 ![Alt text](images/findMDFilesFromDir.jpeg)
 
+## Promesa readingFile
+
+![Alt text](images/readingFile.jpeg)
+
+
+## Función searchingLinks
+
+![Alt text](images/searchingLinks.jpeg)
+
 <a name='tutorial'></a>
 # Tutorial de uso
 
@@ -93,12 +101,22 @@ Al dar una ruta se pueden presentar diferentes situaciones:
 
 En la captura de pantalla no se alcanzan a ver todos los links encontrados, pero el listado corresponde a todods los links encontrados en carpetas y subcarpetas.
 
+## md-links <path> --validate
 
+En este caso digitamos el nombre de nuestra librería una ruta y la opción --validate. De acuerdo al contenido del archivo se obtiene el siguiente resultado:
 
+![Alt text](images/withValidate.png)
 
+## md-links --validate --stats
+La captura de pantalla muestras los resultados cuando se aplican las dos opciones:
 
- 
+![Alt text](images/withStatsAndValidate.png)
 
+## md-links --stats
+
+Cuando solo se digita la opción de stats:
+
+![Alt text](images/withStats.png)
 
 # Contribuidora
 
