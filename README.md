@@ -50,7 +50,6 @@ npm i mdlinks-ang
 
 ![Alt text](images/mdLinks.jpeg)
 
-
 ## Función findLinksInMarkdownFiles
 
 ![Alt text](images/findLinksInMarkdownFiles.jpeg)
@@ -61,8 +60,7 @@ npm i mdlinks-ang
 
 ## Promesa readingFile
 
-![Alt text](images/readingFile.jpeg)
-
+![Alt text](<images/readingFile (1).jpeg>)
 
 ## Función searchingLinks
 
