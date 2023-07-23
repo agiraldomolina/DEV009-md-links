@@ -45,7 +45,7 @@ npm i mdlinks-ang
 ## cli.js
 
 ![Alt text](<images/cli_js (3).jpeg>)
-A partir del archivo cli.js se crea el ejecutable para md-links, a continuación se presenta el diagrama de flujo para el código de esre archivo:
+A partir del archivo cli.js se crea el ejecutable para md-links, a continuación se presenta el diagrama de flujo para el código de este archivo:
 
 ## Promesa mdLinks
 
