@@ -73,7 +73,7 @@ Al dar una ruta se pueden presentar diferentes situaciones:
 
   En este caso podríamos escribir la siguiente linea de comando y obtener estos resultados:
 
-![Alt text](images/directory.png)
+![Alt text](images/inDirectory.png)
 
 En la captura de pantalla no se alcanzan a ver todos los links encontrados, pero el listado corresponde a todods los links encontrados en carpetas y subcarpetas.
 
