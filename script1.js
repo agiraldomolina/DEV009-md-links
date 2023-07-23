@@ -53,28 +53,19 @@ const searchingLinks=(data,myPath)=>{
     // Regular expression to match Markdown-style links.
     const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
         const links=[];
-        let match;
+         // Search first link in the data using the regular expression.
+        let match= linkRegex.exec(data);
         // Search for links in the data using the regular expression.
-        while ((match=linkRegex.exec(data))){
+        while ((match !=null)){
             const linkText=match[1]; // Text inside the link's square brackets.
             const linkUrl=match[2];  // URL inside the link's parentheses.
             // Create a link object and add it to the array of links.
-            links.push({text:linkText, url:linkUrl, file: correctDoubleBackSlash(myPath)})
+            links.push({text:linkText, url:linkUrl, file: myPath})
+            match=linkRegex.exec(data)
         }
     return links
 };
-
-/**
- * Corrects the double backslashes in a given path string and returns the updated path.
- * The function replaces occurrences of double backslashes "\\" with a single backslash "\".
- * @param {string} pathString - The path string to correct.
- * @returns {string} The updated path string with corrected backslashes.
- */
- const correctDoubleBackSlash=(pathString)=>{
-    // Replace occurrences of double backslashes with a single backslash.
-    return pathString.replace('/\\', '/\/')
- }
-
+ 
 /**
  * Validates an array of found links by making HTTP requests to their URLs using Axios.
  * The function checks the status of each URL and updates the link objects with the validation results.

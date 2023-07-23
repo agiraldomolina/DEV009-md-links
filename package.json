@@ -1,6 +1,6 @@
 {
   "name": "mdlinks-ang",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Herramienta de línea de comando (CLI) y librería exportable que extrae los links de archivos markdown",
   "main": "cli.js",
   "directories": {

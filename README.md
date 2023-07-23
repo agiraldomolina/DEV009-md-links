@@ -10,7 +10,7 @@ En este proyecto se desarrolló una herramienta de línea de comando (CLI) y lib
 
 [Presentacion](#presentacion) •
 [Instalación](#instalacion) •
-[Diagrama de Flujo](#diagrama-de-flujo) •
+[Diagrama de Flujo](#diagramas) •
 [Tutorial de uso](#tutorial) •
 [Contribuidora](#contribuidora) •
 [Acknowledgments](#acknowledgments)
@@ -40,9 +40,25 @@ npm install @agiraldomolina/DEV009-md-links
 Digitar en la terminal:
 npm i mdlinks-ang
 
+<a name='diagramas'></a>
 # Diagrama de Flujo
 
-En elaboracion
+## cli.js
+
+![Alt text](<images/cli_js (3).jpeg>)
+
+## Promesa mdLinks
+
+![Alt text](images/mdLinks.jpeg)
+
+
+## Función findLinksInMarkdownFiles
+
+![Alt text](images/findLinksInMarkdownFiles.jpeg)
+
+## Función findMDFilesFromDir
+
+![Alt text](images/findMDFilesFromDir.jpeg)
 
 <a name='tutorial'></a>
 # Tutorial de uso
