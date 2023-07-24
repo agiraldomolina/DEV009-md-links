@@ -16,39 +16,32 @@ const {findLinksInMarkdownFiles}=require('./script2.js')
  *                                   representing the validated links.
  * @throws {Error} If the provided path is invalid or if any error occurs during the process.
  */
-const mdLinks=(myPath, validate=false)=>{
-    return new Promise((resolve,reject)=>{
-        // Check if the provided path is valid.
-        if(!checkIsPath(myPath)){
-            reject(new Error('Path is invalid'))
-        }else{
-             // Find links in markdown files within the specified path.
-            findLinksInMarkdownFiles(myPath).then(links=>{
-                try {
-                    if (links.length >0){
-                        // If there are links found, optionally validate them based on the 'validate' flag.
-                        if(validate===true){
-                            resolve(validateFoundLinks(links))
-                        }else{
-                            resolve(links)
-                        }
-                    }else{
-                        // Resolve with an empty array if no links are found.
-                        resolve([]);
-                    }
-                } catch (error) {
-                    // Catch any errors that occurred during the validation process
-                    console.error('Error',error)
-                    reject(error)
-                }              
-            })
-            .catch(error=>{
-                // Catch any errors that occurred during the link search process.
-                console.error('Error', error);
-                reject(error);
-            })
-        }          
-    })
+const mdLinks = (myPath, validate = false) => {
+    // Check if the provided path is valid.
+    if (!checkIsPath(myPath)) {
+      return Promise.reject(new Error('Path is invalid'));
+    }
+  
+    // Find links in markdown files within the specified path.
+    return findLinksInMarkdownFiles(myPath)
+      .then(links => {
+        if (links.length > 0) {
+          // If there are links found, optionally validate them based on the 'validate' flag.
+          if (validate === true) {
+            return validateFoundLinks(links);
+          } else {
+            return links;
+          }
+        } else {
+          // Resolve with an empty array if no links are found.
+          return [];
+        }
+      })
+      .catch(error => {
+        // Catch any errors that occurred during the process.
+        console.error('Error', error);
+        throw error;
+      });
   };
 
   module.exports=mdLinks;

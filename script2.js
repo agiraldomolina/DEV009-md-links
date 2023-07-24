@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 
 const { isMDFile, readingFile } = require("./script1");
-const { list } = require("cowsay");
 
 /**
  * Next function recursively finds all markdown files in the specified directory path and its subdirectories.
