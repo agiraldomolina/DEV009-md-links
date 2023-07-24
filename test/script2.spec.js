@@ -53,16 +53,6 @@ const linksFounded=[
     file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\test3.md'
   },
   {
-    text: 'npm',
-    url: 'https://www.npmjs.com/',
-    file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\test3.md'
-  },
-  {
-    text: 'Functions | MDN',
-    url: 'https://developer.mozilla.org/es/docs/Learn/JavaScript/Building_blocks/Functions',
-    file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\test3.md'
-  },
-  {
     text: 'JavaScript Info',
     url: 'https://javascript.info/',
     file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\mdFiles\\test3.md'
@@ -91,7 +81,7 @@ describe('findMDFilesFromDir',()=>{
       expect(typeof findLinksInMarkdownFiles).toBe('function')
     });
 
-    it('Should return an array with twelve objects with information about links and their status',()=>{
+    it('Should return an array with ten objects ',()=>{
       return findLinksInMarkdownFiles('./mdFiles').then(result=>{
         expect(result).toEqual(linksFounded)
       })

@@ -53,7 +53,7 @@ A partir del archivo cli.js se crea el ejecutable para md-links, a continuación
 
 ## Función findLinksInMarkdownFiles
 
-![Alt text](images/findLinksInMarkdownFiles.jpeg)
+![Alt text](<images/findLinksInMarkdownFiles (1).jpeg>)
 
 ## Función findMDFilesFromDir
 

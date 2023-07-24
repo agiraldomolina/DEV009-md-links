@@ -51,6 +51,7 @@ if (!myPath) {
   // When the validation option is specified, find and display links with validation status.
   mdLinks(myPath,validate)
   .then((links)=>{
+    console.log(links);
     msgCow=`Files reading successfully!!\n and ${links.length} links were found\n Next you can see all links and their status`
     myCowSays(msgCow,"00");
     links.forEach(link=>{
@@ -66,7 +67,7 @@ if (!myPath) {
   // When the stats option is specified, find and display link statistics.
   mdLinks(myPath,validate)
   .then((links)=>{
-    msgCow=`Files reading successfully!!\n and ${links.length} links were found\n Next you can the stats`
+    msgCow=`Files reading successfully!!\n and ${links.length} links were found\n Next you can see the stats`
     myCowSays(msgCow,"$$");
     const statsResult = fetchStats(links);
     !validate?
