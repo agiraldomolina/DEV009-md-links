@@ -95,6 +95,37 @@ const searchingLinks=(data,myPath)=>{
     return Promise.all(requestAxios)
 };
 
+const objectLinksExample=[
+  {
+    text: 'Generalidades del protocolo HTTP - MDN',
+    url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
+    file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+  },
+  {
+    text: 'Mensajes HTTP - MDN',
+    url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Messages',
+    file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+  },
+  {
+    text: 'Link roto',
+    url: 'https://www.youtube.com/01RHn23Bn_0',
+    file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+  },
+  {
+    text: 'Módulos, librerías, paquetes, frameworks... ¿cuál es la diferencia?',
+    url: 'http://community.laboratoria.la/t/modulos-librerias-paquetes-frameworks-cual-es-la-diferencia/175',
+    file: 'C:\\Users\\albag\\OneDrive\\Escritorio\\mdLinks\\DEV009-md-links\\test1.md'
+  }
+];
+
+// validateFoundLinks(objectLinksExample)
+// .then(result=>{
+//   console.log(result);
+// })
+
+//console.log(validateFoundLinks(objectLinksExample));
+
+
 module.exports={
     checkIsPath,
     isMDFile,
