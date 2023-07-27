@@ -75,10 +75,12 @@ const {
           url: 'https://developer.mozilla.org/es/docs/Web/HTTP/Overview',
         }
       ];
-      const filePath='./mdFiles/ejemplo2.md'
-      return readingFile(filePath).then(result=>{
-        expect(result).toStrictEqual(expectedLinks)
-      });
+      const filePath='./mdFiles/ejemplo2.md';
+      return expect(readingFile(filePath)).resolves.toStrictEqual(expectedLinks)
+
+      // return readingFile(filePath).then(result=>{
+      //   expect(result).toStrictEqual(expectedLinks)
+      // });
     })
   });
   describe('validateFoundLinks',()=>{
